@@ -1,0 +1,86 @@
+.App {
+  text-align: center;
+  padding-top: 50px;
+}
+
+h1 {
+  font-weight: normal;
+  font-size: 16px;
+}
+
+.shell {
+  display: inline-block;
+  background-color: burlywood;
+  width: 75px;
+  height: 100px;
+  position: relative;
+  cursor: pointer;
+}
+
+.shell:not(:last-child) {
+  margin-right: 20px;
+}
+
+.shell.guessed {
+  background-color: orange;
+}
+
+.shell.guessed.game-success {
+  background-color: green;
+}
+
+.shell.guessed.game-failed {
+  background-color: orangered;
+}
+
+.shell.has-ball.game-initial,
+.shell.has-ball.game-success,
+.shell.has-ball.game-failed {
+  bottom: 40px;
+}
+
+.shell.has-ball::before {
+  display: none;
+}
+
+.has-ball.game-initial::before,
+.has-ball.game-success::before,
+.has-ball.game-failed::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background-color: black;
+  display: inline-block;
+  position: absolute;
+  left: calc(50% - 5px);
+  bottom: -30px;
+}
+
+.shell.game-shuffle {
+  animation: Float .5s linear infinite;
+}
+
+@keyframes Float {
+  0% {
+    bottom: 0;
+  }
+  50% {
+    bottom: 10px;
+  }
+  100% {
+    bottom: 0;
+  }
+}
+
+.GameControls {
+  padding-top: 20px;
+}
+
+.button {
+  border-radius: 3px;
+  background-color: bisque;
+  display: inline-block;
+  padding: 10px 20px;
+  cursor: pointer;
+}
