@@ -6,30 +6,9 @@ import {
   SELECT_SHELL
 } from '../actions';
 
-const shells = [
-  {
-    id: 1,
-    hasBall: false
-  },
-  {
-    id: 2,
-    hasBall: false
-  },
-  {
-    id: 3,
-    hasBall: false
-  }
-];
-const game = {
-  state: 'INITIAL'
-};
+import initialState from './initialState';
 
-const defaultState = {
-  shells,
-  game
-}
-
-const rootReducer = (state = defaultState, action) => {
+const rootReducer = (state = initialState, action) => {
   switch(action.type) {
     case INSERT_BALL:
       let shells = state.shells.map((el) => ({...el, hasBall: false}));

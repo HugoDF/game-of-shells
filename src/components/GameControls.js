@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function GameControls(props) {
+function GameControls(props) {
   const { state } = props;
   switch(state) {
     case 'INITIAL':

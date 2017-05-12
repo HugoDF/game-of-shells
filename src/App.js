@@ -10,31 +10,20 @@ import {
 } from './actions';
 
 import GameControls from './components/GameControls';
+import Shells from './components/Shells';
 
 export function App(props) {
   const { shells = [], game = {} } = props;
+  const selectShell = game.state === 'START' ? props.selectShell : () => {};
   return (
     <div className="App">
-      <div className="shells">
-        {
-          shells.map((el, i) => {
-            const isGuess = game.guessId === el.id;
-            const modifierClasses = [
-              el.hasBall && 'has-ball',
-              `game-${game.state && game.state.toLowerCase()}`,
-              isGuess && 'guessed'
-            ].filter(Boolean).join(' ');
-            return (
-              <div
-                key={i}
-                className={`shell ${modifierClasses}`}
-                onClick={props.selectShell.bind(null, el.id)}
-                />
-            )
-          })
-        }
-      </div>
-      <GameControls {...props} {...game} />
+      <Shells
+        game={game}
+        shells={shells}
+        selectShell={selectShell} />
+      <GameControls
+        start={props.start}
+        {...game} />
     </div>
   );
 }
