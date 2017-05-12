@@ -11,8 +11,8 @@ import {
 
 import GameControls from './components/GameControls';
 
-function App(props) {
-  const { shells, game } = props;
+export function App(props) {
+  const { shells = [], game = {} } = props;
   return (
     <div className="App">
       <div className="shells">
@@ -21,7 +21,7 @@ function App(props) {
             const isGuess = game.guessId === el.id;
             const modifierClasses = [
               el.hasBall && 'has-ball',
-              `game-${game.state.toLowerCase()}`,
+              `game-${game.state && game.state.toLowerCase()}`,
               isGuess && 'guessed'
             ].filter(Boolean).join(' ');
             return (
